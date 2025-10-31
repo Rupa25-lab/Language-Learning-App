@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Learning App</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      margin-top: 80px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #3b3b98;
+    }
+    select, button {
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+    .card {
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-radius: 12px;
+    }
+    .result {
+      font-size: 20px;
+      color: #0b8457;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌍 Language Learning App</h1>
+  <div class="card">
+    <label for="word">Choose an English word:</label><br>
+    <select id="word">
+      <option value="Hello">Hello</option>
+      <option value="Thank you">Thank you</option>
+      <option value="Good morning">Good morning</option>
+      <option value="Good night">Good night</option>
+    </select><br>
+    <label for="language">Translate to:</label><br>
+    <select id="language">
+      <option value="spanish">Spanish</option>
+      <option value="french">French</option>
+      <option value="tamil">Tamil</option>
+    </select><br>
+    <button onclick="translateWord()">Translate</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function translateWord() {
+      const word = document.getElementById('word').value;
+      const lang = document.getElementById('language').value;
+      let translation = '';
+
+      const translations = {
+        "Hello": {spanish: "Hola", french: "Bonjour", tamil: "வணக்கம்"},
+        "Thank you": {spanish: "Gracias", french: "Merci", tamil: "நன்றி"},
+        "Good morning": {spanish: "Buenos días", french: "Bonjour", tamil: "காலை வணக்கம்"},
+        "Good night": {spanish: "Buenas noches", french: "Bonne nuit", tamil: "இனிய இரவு வணக்கம்"}
+      };
+
+      translation = translations[word][lang];
+      document.getElementById('result').innerText = `👉 ${translation}`;
+    }
+  </script>
+</body>
+</html>
